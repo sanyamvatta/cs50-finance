@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+  <form action="/buy" method="post">
+    <input autocomplete="off" type="text" name="stock" placeholder="stock symbol" id="">
+    <select name="quantity" id="">
+      {% for i in range(100) %}
+      <option value="{{i+1}}">{{i+1}}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Buy</button>
+  </form>
+{% endblock %}

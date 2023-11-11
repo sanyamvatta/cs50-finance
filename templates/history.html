@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+
+{% block main %}
+  <table class="table table-primary table-striped">
+    <thead>
+      <tr>
+        <th scope="col">symbol</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Date and Time</th>
+        <th scope="col">Type</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+      <tr>
+        <td>{{transaction['symbol']}}</td>
+        <td>{{transaction['shares']}}</td>
+        <td>{{transaction['price']}}</td>
+        <td>{{transaction['timestamp']}}</td>
+        <td>{{transaction['type']}}</td>
+        <td>{{usd(float(transaction['price'] * transaction['shares']))}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
